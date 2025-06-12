@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Чат с ИИ</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+    .chatbox { width: 100%; max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+    .message { margin: 10px 0; }
+    .user { color: blue; }
+    .bot { color: green; }
+  </style>
+</head>
+<body>
+  <div class="chatbox" id="chatbox">
+    <div class="message bot">Привет, Максим! Я — твой бот. Чем могу помочь?</div>
+  </div>
+  <input id="userInput" type="text" placeholder="Напиши что-нибудь..." onkeydown="if(event.key==='Enter') sendMessage()" style="width: 100%; padding: 10px;" />
+  <script>
+    function sendMessage() {
+      let input = document.getElementById('userInput');
+      let chatbox = document.getElementById('chatbox');
+      let userMsg = input.value;
+      if (userMsg.trim() === '') return;
+      chatbox.innerHTML += `<div class="message user"><b>Ты:</b> ${userMsg}</div>`;
+      input.value = '';
+      // Тут можно вставить код для подключения к ИИ
+      setTimeout(() => {
+        chatbox.innerHTML += `<div class="message bot"><b>Бот:</b> Я получил твоё сообщение: "${userMsg}"</div>`;
+      }, 500);
+    }
+  </script>
+</body>
+</html>
